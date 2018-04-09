@@ -1,11 +1,11 @@
 {
   "name": "cargodb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A local database provider for electron",
   "main": "src/build.js",
   "scripts": {
-    "start" : "node src/build.js",
-    "test" : "node src/test.js"
+    "start": "node src/build.js",
+    "test": "node src/test.js"
   },
   "keywords": [
     "cargodb",
