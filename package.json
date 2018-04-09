@@ -1,0 +1,21 @@
+{
+  "name": "cargodb",
+  "version": "1.0.0",
+  "description": "A local database provider for electron",
+  "main": "src/build.js",
+  "scripts": {
+    "start" : "node src/build.js",
+    "test" : "node src/test.js"
+  },
+  "keywords": [
+    "cargodb",
+    "db",
+    "cargo",
+    "localstorage",
+    "storage",
+    "crate",
+    "database"
+  ],
+  "author": "Paweł Karaś (Phoenix)",
+  "license": "MIT"
+}
