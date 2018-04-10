@@ -44,7 +44,7 @@ module.exports = (
 
       fs.writeFile(loc, item, err => {
         if (err) arg = 'CargoDB: ' + err
-        callback(arg)
+        if (callback) callback(arg)
       })
     }
 
@@ -58,7 +58,7 @@ module.exports = (
 
         fs.readFile(loc, 'utf-8', (err, item) => {
           if (err) arg = 'CargoDB: ' + err
-          callback(arg,item)
+          if (callback) callback(arg,item)
         })
     }
 
