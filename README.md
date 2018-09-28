@@ -1,3 +1,9 @@
+<div align="center">
+  <img width="200" height="200" src="https://raw.githubusercontent.com/Ph0enixKM/CargoDB/master/cargo.png">
+  <br>
+  <br>
+</div>
+
 ## CargoDB
 Provides quick Local Storage API which can be used to store big data in Electron app.
 Browser built-it local storage prevents from storing more than 10MB on client side.

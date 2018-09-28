@@ -48,6 +48,14 @@ module.exports = (
       })
     }
 
+    setItemSync (storage, item) {
+      return new Promise(res => {
+        this.setItem(storage, item, arg => {
+          return res(arg)
+        })
+      })
+    }
+
     /** Get Item Method
      * @param {storage} string
      * @param {callback(error,data)} function
@@ -60,6 +68,14 @@ module.exports = (
           if (err) arg = 'CargoDB: ' + err
           if (callback) callback(arg,item)
         })
+    }
+
+    getItemSync (storage) {
+      return new Promise(res => {
+        this.getItem(storage, arg => {
+          return res(arg)
+        })
+      })
     }
 
   }

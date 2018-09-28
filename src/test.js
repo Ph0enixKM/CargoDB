@@ -14,3 +14,10 @@ storage.setItem('age',18,()=>{
     console.log(data)
   })
 })
+
+// Async/Await alternative
+;(async ()=>{
+  await storage.setItemSync('name', 'Cargo')
+  let name = await storage.getItemSync('name')
+  console.log(name)
+})()
