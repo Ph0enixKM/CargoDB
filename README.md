@@ -38,6 +38,14 @@ storage.getItem('key', function (error, item) {
 })
 ```
 
+It also provides Async/Await logic
+
+```js
+await storage.setItemSync('key','value')
+
+await storage.getItemSync('key')
+```
+
 That's it. That's all it does. Quite easy isn't it?
 It all provides you a quick and easy way to store big information which doesn't
 need to be secured!
