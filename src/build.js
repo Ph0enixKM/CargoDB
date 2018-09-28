@@ -72,8 +72,8 @@ module.exports = (
 
     getItemSync (storage) {
       return new Promise(res => {
-        this.getItem(storage, arg => {
-          return res(arg)
+        this.getItem(storage, (_arg, item) => {
+          return res(item)
         })
       })
     }
