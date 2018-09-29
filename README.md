@@ -7,7 +7,7 @@
 ## CargoDB
 Provides quick Local Storage API which can be used to store big data in Electron app.
 Browser built-it local storage prevents from storing more than 10MB on client side.
-This is why CargoDB has come to live!
+This is why CargoDB has come to life!
 
 ### API
 First of all you must create the storage.
