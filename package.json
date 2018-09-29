@@ -17,5 +17,8 @@
     "database"
   ],
   "author": "Paweł Karaś (Phoenix)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "simple-encryptor": "^2.0.0"
+  }
 }

@@ -4,7 +4,7 @@ let path = __dirname + '/dir/storages'
 let name = 'storage'
 
 // Create a new storage, you can have them multiple
-let storage = new cargo(name, path)
+let storage = new cargo(name, path, 'dwadwadwadwadwadwadwadwadawdawdadwadawdwadwa')
 
 // Set age item to be 18
 storage.setItem('age',18,()=>{
@@ -15,9 +15,9 @@ storage.setItem('age',18,()=>{
   })
 })
 
-// Async/Await alternative
+// Async/Await alternative with hash
 ;(async ()=>{
-  await storage.setItemSync('name', 'Cargo')
-  let name = await storage.getItemSync('name')
+  await storage.setItemHashSync('name', 'Cargo')
+  let name = await storage.getItemHashSync('name')
   console.log(name)
 })()

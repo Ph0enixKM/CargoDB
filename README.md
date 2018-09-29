@@ -46,6 +46,39 @@ await storage.setItemSync('key','value')
 await storage.getItemSync('key')
 ```
 
-That's it. That's all it does. Quite easy isn't it?
 It all provides you a quick and easy way to store big information which doesn't
 need to be secured!
+
+CargoDB also provides data encryption. This can be usefull for keeping sensitive
+information safe. Notice that all the encrypted data is stored in one file
+called "_hash.crypt"
+
+You have to keep in mind that you have to provide a secret key (16 characters long minimum)
+in order to use the functionality.
+
+```js
+const storage = new cargodb('my_storage','path/to/storage','this is my secret code which is really long')
+```
+
+and then you can just use the following methods:
+
+```js
+storage.setItemHash('key','value', function (error) {
+   // Callback
+})
+    
+storage.getItemHash('key', function (error, item) {
+  // Callback
+})
+```
+
+and Async/Await logic
+
+```js
+await storage.setItemHashSync('key','value')
+
+await storage.getItemHashSync('key')
+```
+
+That's it. That's all it does. Quite easy isn't it?
+
