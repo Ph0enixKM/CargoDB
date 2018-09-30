@@ -140,7 +140,7 @@ module.exports = (
         if (this.encrypt == null) return console.error('CargoDB: Set encryption key first (at least 16 characters long)')
         if (item == undefined) arg = 'Such item doesn\'t exist'
         else dehash = JSON.parse(this.encrypt.decrypt(item))
-        if (callback) callback(arg, dehash[storage])
+        if (callback) callback(arg, dehash ? dehash[storage] : null)
       })
     }
 
