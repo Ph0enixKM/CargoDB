@@ -74,7 +74,8 @@ module.exports = (
       dehash[storage] = value
       let hash = this.encrypt.encrypt(JSON.stringify(dehash))
 
-      return fs.writeFileSync(loc, hash)
+      fs.writeFileSync(loc, hash)
+      return true
     }
 
 
@@ -85,7 +86,7 @@ module.exports = (
       let loc = this.dir + '/' + this.name + '/_hash.crypt'
       let item = fs.readFileSync(loc, 'utf-8')
       let dehash = JSON.parse(this.encrypt.decrypt(item))
-      return dehash ? dehash[item] : null
+      return dehash ? dehash[storage] : null
     }
 
   }

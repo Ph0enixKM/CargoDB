@@ -6,18 +6,10 @@ let name = 'storage'
 // Create a new storage, you can have them multiple
 let storage = new cargo(name, path, 'dwadwadwadwadwadwadwadwadawdawdadwadawdwadwa')
 
-// Set age item to be 18
-storage.setItem('age',18,()=>{
-  // Get the age item
-  storage.getItem('age',(err,data)=>{
-    // Log the item
-    console.log(data)
-  })
-})
+// Set Item
+storage.setItemHash('age', 18)
 
-// Async/Await alternative with hash
-;(async ()=>{
-  await storage.setItemHashSync('name', 'Cargo')
-  let name = await storage.getItemHashSync('name')
-  console.log(name)
-})()
+// Get item
+let age = storage.getItemHash('age')
+
+console.log(age)
