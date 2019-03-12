@@ -29,21 +29,9 @@ Now let's add an Item to storage and get it.
 You might notice that syntax is pretty similar to localStorage's one!
 
 ```js
-storage.setItem('key','value', function (error) {
-   // Callback
-})
+storage.setItem('key','value')
     
-storage.getItem('key', function (error, item) {
-  // Callback
-})
-```
-
-It also provides Async/Await logic
-
-```js
-await storage.setItemSync('key','value')
-
-await storage.getItemSync('key')
+let result = storage.getItem('key')
 ```
 
 It all provides you a quick and easy way to store big information which doesn't
@@ -63,21 +51,9 @@ const storage = new cargodb('my_storage','path/to/storage','this is my secret co
 and then you can just use the following methods:
 
 ```js
-storage.setItemHash('key','value', function (error) {
-   // Callback
-})
+storage.setItemHash('key','value')
     
-storage.getItemHash('key', function (error, item) {
-  // Callback
-})
-```
-
-and Async/Await logic
-
-```js
-await storage.setItemHashSync('key','value')
-
-await storage.getItemHashSync('key')
+let result = storage.getItemHash('key')
 ```
 
 That's it. That's all it does. Quite easy isn't it?
