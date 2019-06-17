@@ -41,10 +41,15 @@ module.exports = (
      * @param {item} string
     */
     setItem (storage, item) {
-      let loc = this.dir + '/' + this.name + '/' + storage + '.json'
-      let arg = false
-
-      fs.writeFileSync(loc, item)
+      let loc = this.dir + '/' + this.name + '.json'
+      //let arg = false
+      if (!fs.existsSync(loc)) {
+        fs.writeFileSync(loc, '{}')
+      }
+      let objectContainer = fs.readFileSync(loc, 'utf-8')
+      objectContainer = JSON.parse(objectContainer)
+      objectContainer[storage] = item
+      fs.writeFileSync(loc, JSON.stringify(objectContainer))
       return true
     }
 
@@ -52,10 +57,10 @@ module.exports = (
      * @param {storage} string
     */
     getItem (storage) {
-        let loc = this.dir + '/' + this.name + '/' + storage + '.json'
-        let arg = false
-
-        return fs.readFileSync(loc, 'utf-8')
+        let loc = this.dir + '/' + this.name + '.json'
+        //let arg = false
+        let objectContainer = JSON.parse(fs.readFileSync(loc, 'utf-8'))
+        return objectContainer[storage]
     }
 
     /** Set Item In Encrypted File Method
