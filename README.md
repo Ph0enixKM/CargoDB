@@ -19,7 +19,8 @@ const cargodb = require('cargodb')
 const storage = new cargodb('my_storage')
 ```
   
-You can also provide a path parameter to the storage:
+You can also provide a path parameter to the storage
+(because right now it's initing in the *node_modules* and you probably don't really want it)
   
 ```js
 const storage = new cargodb('my_storage','path/to/storage')

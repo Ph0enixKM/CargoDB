@@ -5,7 +5,7 @@
   "main": "src/build.js",
   "scripts": {
     "start": "node src/build.js",
-    "test": "node src/test.js"
+    "test": "jest"
   },
   "keywords": [
     "cargodb",
