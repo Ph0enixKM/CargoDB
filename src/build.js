@@ -9,6 +9,7 @@ module.exports = (
   function(){
   // Modules required
   const fs = require('fs')
+  const path = require('path')
 
   // Create Base Folder Private Function
   function createBase(x) {
@@ -38,7 +39,7 @@ module.exports = (
      * @param {item} string
     */
     setItem (storage, item) {
-      let loc = this.dir + '/' + this.name + '.json'
+      let loc = path.join(this.dir, this.name, storage + '.cargo')
 
       if (!fs.existsSync(loc)) {
         fs.writeFileSync(loc, '{}')
@@ -54,7 +55,7 @@ module.exports = (
      * @param {storage} string
     */
     getItem (storage) {
-        let loc = this.dir + '/' + this.name + '.json'
+        let loc = path.join(this.dir, this.name, storage + '.cargo')
 
         if (fs.existsSync(loc)) {
             let objectContainer = JSON.parse(fs.readFileSync(loc, 'utf-8'))
