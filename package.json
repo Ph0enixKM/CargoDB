@@ -19,6 +19,8 @@
   "author": "Paweł Karaś (Phoenix)",
   "license": "MIT",
   "dependencies": {
+    "jest": "^25.3.0",
+    "shortid": "^2.2.15",
     "simple-encryptor": "^2.0.0"
   }
 }
