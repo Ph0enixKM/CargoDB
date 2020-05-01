@@ -1,7 +1,5 @@
 <div align="center">
-  <img width="200" height="200" src="https://raw.githubusercontent.com/Ph0enixKM/CargoDB/master/cargo.png">
-  <br>
-  <br>
+  <img src="arts/logo-banner.png" width="500">
 </div>
 
 # CargoDB
@@ -32,7 +30,6 @@ const storage = new CargoDB('my_storage','path/to/storage')
 Static cargos are basically what you would need 
 for instance when writing an Electron app.
 
-
 Static cargos behave the same way as JavsScript's **localStorage** does.
 You can just *get item* and *set item*.
 
@@ -51,8 +48,6 @@ it returns **null** when getting data and **false** when setting data.
 ## Freighters
 
 Freighters are really just collections of data. They behave similarly to the way for instance *MongoDB*  does. These can store big number of cargos and they provide really convenient methods on manipulating the data.
-
-
 
 Accessing such freighter can be done using *in* method
 
@@ -121,3 +116,10 @@ users.remove(id)
 When cargo can't find the cargo under given ID it returns **undefined**. 
 however when the data container (*.cargo* file) happens to be corrupted
 it returns **null** after completing operation *(find method is an exception - it still logs error however)*
+
+<div align="center">
+    <br>
+    <img src="arts/logo.png" width="200">
+</div>
+
+
