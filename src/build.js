@@ -45,6 +45,7 @@ module.exports = (
 
     constructor(name, dir, key) {
       // Provide a storage name 'string'
+      this.queue = []
       this.name = name || (function () {
         throw 'No storage name provided'
       })()
