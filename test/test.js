@@ -48,6 +48,9 @@ async function start() {
 
     // ---COLLECTIONS --- 
 
+    // Create storage
+    storage.create('users')
+
     // Create a cargo
     let myID = await storage.in('users').add({
         name: 'Phoenix',

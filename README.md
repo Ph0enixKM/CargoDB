@@ -52,59 +52,19 @@ Static cargo name (and collection names) shall match the following regular expre
 
 Cargo collections are really just collections of data. They behave similarly to the way for instance *MongoDB*  does. These can store big number of cargos and they provide really convenient methods on manipulating the data.
 
-You can create a collection with provided schema or without.
+You can create a collection (this just tells Cargo that such collection will be used).
 
 ```js
-// Creating collection without schema
 storage.create('articles')
 ```
 
-However... Creating collections using schema is highly recommended. The reason is that they can be much more optimized.
-
-```js
-// Create collection with a schema
-storage.create('articles', (data, cache, refer) => ({
-    title: cache('Untitled Article'),
-    content: data('Lorem ipsum...'),
-    tags: refer([]),
-    photos: {
-        name: cache('Untitled Photo'),
-        data: data(''),
-        resolution: data([0, 0]),
-        author: refer()
-    }
-}))
-
-// You can create a collection with schema written in cargo schema language
-storage.create('articles', `
-    title = 'Untitled Article' cache
-    age = 20
-    date = 0
-    achievements = [refer]
-    photos:
-        name = 'Untitled Photo' cache
-        data = ''
-        resolution = [0, 0]
-        author = <refer>
-`)
-
-// or you can point cargo to used directory containing schemas saved in files
-storage.createFrom('/path/to/schemas')
-
-/*
- schemas
- |- users.cargosl
- |- photos.cargosl
-*/
-```
-
-Accessing such ship can be done using *in* method
+Accessing collection can be done using *in* method
 
 ```js
 storage.in('articles')
 ```
 
-Let's put some cargo into our ship:
+Let's put some cargo into our collection:
 
 ```js
 // Add a Cargo to the collection
@@ -117,7 +77,7 @@ storage.in('users').add({
 })
 ```
 
-From now on we can basically do whatever we want with the data inside of the ships. Here are some usage examples:
+From now on we can basically do whatever we want with the data inside of the collections. Here are some usage examples:
 
 ```js
 const users = storage.in('users')
