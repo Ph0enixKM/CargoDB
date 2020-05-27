@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="arts/logo-banner.png" width="500">
+  <img src="https://raw.githubusercontent.com/Ph0enixKM/CargoDB/master/arts/logo-banner.png" width="500">
 </div>
 
 # CargoDB
