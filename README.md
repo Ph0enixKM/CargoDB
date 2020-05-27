@@ -4,61 +4,110 @@
 
 # CargoDB
 
-CargoDB is a database which can be used as a lightweight standalone 
-storage with really simple API.
+CargoDB is a database which uses filesystem to store data in files (cargos). It provides really simple API and omits bullshit solutions that make your code even more complex.
 
-# API
+# API 🎍
 
 First of all you must create the storage.
 Actually you can create as many storages as you want.
 
 ```js
-const CargoDB = require('cargodb')
+import Cargo  from 'cargodb'
+const Cargo = require('cargodb')
 
-const storage = new CargoDB('my_storage')
+const storage = new Cargo('my_storage')
 ```
 
-You can also provide a path parameter to the storage
-(because right now it's initing in the *node_modules* and you probably don't really want it)
+You can also provide a path parameter which can point some other place in your directory
+(because right now it's initing in the root of your project)
 
 ```js
-const storage = new CargoDB('my_storage','path/to/storage')
+const storage = new Cargo('my_storage','/absolute/path/to/create/storage')
+
+// Path from root of the project
+const storage = new Cargo('my_storage','~/path/to/dir/from/root')
 ```
 
-## Static Cargos
+## Static Cargos 🚛
 
-Static cargos are basically what you would need 
+Trucks are basically what you would need 
 for instance when writing an Electron app.
 
-Static cargos behave the same way as JavsScript's **localStorage** does.
+Trucks behave the same way as JavaScript's **localStorage** does.
 You can just *get item* and *set item*.
 
 ```js
-storage.setItem('key','value')
+// Setting item
+storage.set('key', 'value')
 
-let result = storage.getItem('key')
+// Getting item
+let result = storage.get('key')
 ```
 
-#### Important note:
+#### Important note ⚓
 
-When cargo can't find the data under the key it returns **undefined** 
-however when the data container (*.cargo* file) happens to be corrupted
-it returns **null** when getting data and **false** when setting data.
+Static cargo name (and collection names) shall match the following regular expression: `/^[A-Za-z0-9@$\-#%&_()\[\]{}]+$/`. 
 
-## Freighters
+## Cargo Collections 🚢
 
-Freighters are really just collections of data. They behave similarly to the way for instance *MongoDB*  does. These can store big number of cargos and they provide really convenient methods on manipulating the data.
+Cargo collections are really just collections of data. They behave similarly to the way for instance *MongoDB*  does. These can store big number of cargos and they provide really convenient methods on manipulating the data.
 
-Accessing such freighter can be done using *in* method
+You can create a collection with provided schema or without.
+
+```js
+// Creating collection without schema
+storage.create('articles')
+```
+
+However... Creating collections using schema is highly recommended. The reason is that they can be much more optimized.
+
+```js
+// Create collection with a schema
+storage.create('articles', (data, cache, refer) => ({
+    title: cache('Untitled Article'),
+    content: data('Lorem ipsum...'),
+    tags: refer([]),
+    photos: {
+        name: cache('Untitled Photo'),
+        data: data(''),
+        resolution: data([0, 0]),
+        author: refer()
+    }
+}))
+
+// You can create a collection with schema written in cargo schema language
+storage.create('articles', `
+    title = 'Untitled Article' cache
+    age = 20
+    date = 0
+    achievements = [refer]
+    photos:
+        name = 'Untitled Photo' cache
+        data = ''
+        resolution = [0, 0]
+        author = <refer>
+`)
+
+// or you can point cargo to used directory containing schemas saved in files
+storage.createFrom('/path/to/schemas')
+
+/*
+ schemas
+ |- users.cargosl
+ |- photos.cargosl
+*/
+```
+
+Accessing such ship can be done using *in* method
 
 ```js
 storage.in('articles')
 ```
 
-Let's put some cargo into our freighter:
+Let's put some cargo into our ship:
 
 ```js
-// Add a Cargo to the Freighter
+// Add a Cargo to the collection
 // The method returns the newly 
 // created cargo's ID
 storage.in('users').add({
@@ -68,7 +117,7 @@ storage.in('users').add({
 })
 ```
 
-From now on we can basically do whatever we want with the data inside of the freighters. Here are some usage examples:
+From now on we can basically do whatever we want with the data inside of the ships. Here are some usage examples:
 
 ```js
 const users = storage.in('users')
@@ -111,15 +160,18 @@ users.update(id, {
 users.remove(id)
 ```
 
-#### Important note:
+## Rusty Containers 🗝️
 
-When cargo can't find the cargo under given ID it returns **undefined**. 
-however when the data container (*.cargo* file) happens to be corrupted
-it returns **null** after completing operation *(find method is an exception - it still logs error however)*
+Rusty containers are basically files that are corrupted in some way. When cargo finds one it changes given file extension to **.rusty.cargo**. If you want to handle those situation, you can listen to a "rusty" event dispatched by cargo instance. Remember that listening to rusty event removes errors from the console.
+
+```js
+storage.onRusty(path => {
+    console.log(`My cargo file has been corrupted ${path}`)
+    // Remove the file / Fix the file
+})
+```
 
 <div align="center">
     <br>
     <img src="arts/logo.png" width="200">
 </div>
-
-
