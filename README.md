@@ -133,5 +133,5 @@ storage.onRusty(path => {
 
 <div align="center">
     <br>
-    <img src="arts/logo.png" width="200">
+    <img src="https://raw.githubusercontent.com/Ph0enixKM/CargoDB/master/arts/logo.png" width="200">
 </div>
